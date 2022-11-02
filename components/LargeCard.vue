@@ -37,6 +37,13 @@ export default {
   overflow: hidden;
   padding: 0;
   cursor: pointer;
+  border-radius: 0.5rem;
+  background: #0b4f52;
+  color: #f5ce68;
+}
+
+.card:hover {
+  text-decoration: none;
 }
 .image {
   height: 65%;

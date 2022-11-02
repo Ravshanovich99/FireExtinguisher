@@ -1,14 +1,15 @@
 <template>
   <div class="Hero container">
     <div class="text-container">
-      <h1 class="header">Find Your Fire Extinguisher</h1>
-      <p class="snippet">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-        enim odio porro alias repellendus.
-      </p>
-      <button class="button btn">Go Looking</button>
+      <h1 class="header">Florida's gifts for everybody</h1>
+      <p class="snippet">True happiness comes by making others happy!</p>
+      <NuxtLink to="/products">
+        <button class="button btn">Go Looking</button>
+      </NuxtLink>
     </div>
-    <img src="~assets/svg/fire-extinguisher.svg" alt="fire-extinguisher" />
+    <div class="gift-icon">
+      <img src="~assets/svg/gift-icon.svg" alt="fire-extinguisher" />
+    </div>
   </div>
 </template>
 
@@ -38,7 +39,7 @@ export default {}
 }
 .header {
   font-weight: 900;
-  font-size: 5rem;
+  font-size: 4rem;
 }
 .snippet {
   color: grey;
@@ -58,10 +59,11 @@ export default {}
 .button {
   padding: 1rem 4rem;
   border-radius: 100rem;
-  background-color: rgb(231, 81, 43);
-  color: white;
+  background-color: #ffcc71;
+  color: #0b4f52;
   width: 20rem;
   font-weight: 700;
+  font-size: 1.3rem;
   transition: 0.5s;
 }
 .button:hover {
@@ -71,5 +73,14 @@ export default {}
   .Hero {
     height: 40vh;
   }
+}
+
+.gift-icon {
+  padding-top: 4rem;
+}
+
+.gift-icon img {
+  width: 100%;
+  height: 100%;
 }
 </style>

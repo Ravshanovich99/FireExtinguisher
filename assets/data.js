@@ -33,13 +33,13 @@ export const largeCardSections = [
                 id: 22,
                 title: "Vintage 1864 Fire Extinguisher",
                 snippet: "This is hands down the worst fire extinguisher you can use in a crisis. The radiation will kill you if the fire doesn't",
-                image: "fe4.png"
+                image: "fe4.jpg"
             },
             {
                 id: 23,
                 title: "Pure Silver & Gold Fire Extinguisher",
                 snippet: "This one is made out of 50k worth of pure silver and white gold. The metal choice was a poor for functionality, but was great for style!",
-                image: "fe5.png"
+                image: "fe5.jpg"
             },
             {
                 id: 24,
@@ -98,7 +98,7 @@ export const smallCardSections = [
             },
             {
                 id: 11,
-                image: "fe17.jpeg"
+                image: "fe17.jpg"
             },
             {
                 id: 12,
@@ -148,15 +148,15 @@ export const smallCardSections = [
             },
             {
                 id: 22,
-                image: "fe4.png"
+                image: "fe4.jpg"
             },
             {
                 id: 23,
-                image: "fe5.png"
+                image: "fe5.jpg"
             },
             {
                 id: 24,
-                image: "fe5.png"
+                image: "fe6.jpg"
             }
         ]
     }
