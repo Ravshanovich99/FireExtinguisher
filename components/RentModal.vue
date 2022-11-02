@@ -1,22 +1,27 @@
 <template>
   <div>
-    <b-button id="show-btn" @click="showModal">Rent</b-button>
+    <b-button id="show-btn" @click="showModal">Order now</b-button>
 
-    <b-modal ref="my-modal" hide-footer title="Using Component Methods">
-      <div class="calendar-container">
-        <div class="text-container">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            necessitatibus nesciunt, obcaecati repudiandae ratione beatae, et,
-            enim nostrum ducimus ex tempore cumque itaque temporibus sapiente
-            veritatis esse reprehenderit fuga. Error.
-          </p>
-        </div>
+    <b-modal ref="my-modal" hide-footer title="Details to order">
+      <div class="container">
+        <form class="form-container">
+          <b-form-input
+            v-model.trim="name"
+            type="text"
+            placeholder="Enter name"
+            class="form-input"
+          ></b-form-input>
+          <b-form-input
+            v-model.trim="phone"
+            type="tel"
+            placeholder="Enter phone number"
+            class="form-input"
+          ></b-form-input>
+        </form>
         <vc-date-picker color="red" is-dark is-range :value="null" />
       </div>
       <b-button
         id="show-btn"
-        variant="outline-danger"
         @click="
           () => {
             pushProductToRentals($route.params.id)
@@ -33,6 +38,11 @@
 <script>
 import { mapMutations } from 'vuex'
 export default {
+  data() {
+    return {
+      name: '',
+    }
+  },
   methods: {
     showModal() {
       this.$refs['my-modal'].show()
@@ -60,24 +70,31 @@ button {
   width: 100%;
   border: none;
   padding: 0.5rem;
-  color: white;
+  color: #0b4f52;
   font-weight: 700;
   padding: 1rem 4rem;
   border-radius: 100rem;
-  background-color: rgb(231, 81, 43);
-  color: white;
+  background-color: #ffcc71;
   font-weight: 700;
   transition: 0.5s;
 }
-.calendar-container {
-  margin: 0 auto;
+.container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 p {
   color: grey;
 }
-.text-container {
+.form-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
   padding: 0.5rem;
+}
+
+.form-container .form-input {
+  width: 100%;
 }
 </style>

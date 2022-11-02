@@ -75,9 +75,10 @@ export default {
 }
 .info-box {
   width: 39%;
-  background-color: rgba(207, 201, 201, 0.322);
+  background-color: #0b4f52;
   padding: 1rem;
   border-radius: 0.5rem;
+  color: #fff;
 }
 .whats-included-container {
   border-bottom: 0.1rem solid rgba(128, 128, 128, 0.151);

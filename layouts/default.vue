@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$store.state.darkMode ? 'dark-mode' : 'light-mode'">
     <NavMenu />
     <Nuxt />
   </div>
@@ -8,6 +8,14 @@
 
 <style >
 a.nuxt-link-exact-active {
-  border-bottom: 1px solid red !important;
+}
+
+.dark-mode {
+  background: #252525;
+  color: #fff;
+}
+
+.light-mode {
+  background: #fff;
 }
 </style>

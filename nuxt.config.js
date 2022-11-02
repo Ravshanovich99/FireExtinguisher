@@ -15,9 +15,9 @@ export default {
   },
 
   target: 'static',
-  router: {
-    base: 'https://ravshanovich99.github.io/FireExtinguisher/'
-  },
+  // router: {
+  //   base: 'https://ravshanovich99.github.io/FireExtinguisher/'
+  // },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
@@ -26,6 +26,10 @@ export default {
   plugins: [
     {
       src: './plugins/vue-calendar.js',
+      mode: 'client'
+    },
+    {
+      src: './plugins/vue-icons.js',
       mode: 'client'
     }
   ],

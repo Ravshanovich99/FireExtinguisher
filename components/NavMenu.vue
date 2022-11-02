@@ -1,6 +1,9 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark padding">
-    <NuxtLink class="navbar-brand nav-link" to="/">Firengii</NuxtLink>
+  <nav class="navbar navbar-expand-lg navbar-dark padding">
+    <NuxtLink class="navbar-brand nav-link" to="/">
+      <img src="../assets/images/logo.jpg" alt="logo" class="logo" />
+      Florida's gifts
+    </NuxtLink>
     <button
       class="navbar-toggler"
       type="button"
@@ -25,19 +28,36 @@
             >My Items <span class="sr-only">(current)</span></NuxtLink
           >
         </li>
+        <li class="nav-item active icons">
+          <b-icon
+            class="b-icon"
+            :icon="$store.state.darkMode ? 'moon-fill' : 'moon'"
+            @click="darkModeActive"
+          ></b-icon>
+          <b-icon
+            class="b-icon"
+            :icon="!$store.state.darkMode ? 'sun-fill' : 'sun'"
+            @click="lightModeActive"
+          ></b-icon>
+        </li>
       </ul>
     </div>
   </nav>
 </template>
 
 <script>
-export default {}
+import { mapMutations } from 'vuex'
+export default {
+  methods: {
+    ...mapMutations(['darkModeActive', 'lightModeActive']),
+  },
+}
 </script>
 
 <style scoped>
 .padding {
-  padding: 1.5rem;
-  background-color: black;
+  padding: 0.6rem;
+  background-color: #0b4f52;
 }
 .nav-left {
   margin-left: auto;
@@ -45,5 +65,26 @@ export default {}
 
 .nav-link {
   border-bottom: 1px solid transparent;
+}
+
+.logo {
+  width: 10%;
+  height: 10%;
+}
+
+.icons {
+  width: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.navbar-nav {
+  gap: 14px;
+}
+
+.b-icon {
+  cursor: pointer;
 }
 </style>
