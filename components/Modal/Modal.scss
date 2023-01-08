@@ -1,0 +1,17 @@
+@import '../../assets/main.scss';
+
+.modal-content {
+    background: $cl_green;
+    color: $cl_white;
+    transition: 0.3s;
+
+    .modal-header {
+        border-bottom: 1px solid $cl_yellow;
+
+        .close {
+            color: $cl_white;
+            opacity: 1;
+            text-shadow: none;
+        }
+    }
+}

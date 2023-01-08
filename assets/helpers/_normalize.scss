@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    line-height: 1;
+    font-family: inherit;
+}
+
+input,
+select,
+button,
+textarea {
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
+
+body {
+    min-width: 320px;
+    background: #fff;
+    font-family: 'Poppins';
+    font-weight: 400;
+}

@@ -1,203 +1,409 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
+/* eslint-disable no-extra-boolean-cast */
+
+import axios from 'axios'
+
+
 export const state = () => ({
-    darkMode: true,
-    myRentals: [
-        {
-            id: 31,
-            title: "2L Portable & Safe",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe7.jpg"
-        }
-    ],
-    products: [
-        {
-            id: 1,
-            title: "Dry Powder Extinguisher",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe7.jpg"
-        },
-        {
-            id: 2,
-            title: "2L Portable & Safe",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe8.jpg"
-        },
-        {
-            id: 3,
-            title: "2L Portable & Safe",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe9.jpg"
-        },
-        {
-            id: 4,
-            title: "Cartridge Operated Dry Chemical Extinguisher",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe10.jpg"
-        },
-        {
-            id: 5,
-            title: "Clean Agent Fire Extinguisher",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe11.jpg"
-        },
-        {
-            id: 6,
-            title: "Water Mist",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe12.jpg"
-        },
-        {
-            id: 7,
-            title: "Clean Agent Fire Extinguisher",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe13.jpg"
-        },
-        {
-            id: 8,
-            title: "2L Portable & Safe",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe14.jpg"
-        },
-        {
-            id: 9,
-            title: "Water & Foam Fire Extinguisher",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe15.jpg"
-        },
-        {
-            id: 10,
-            title: "Clean Agent Fire Extinguisher",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe16.jpg"
-        },
-        {
-            id: 11,
-            title: "Water Mist",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe17.jpg"
-        },
-        {
-            id: 12,
-            title: "2L Portable & Safe",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe18.jpg"
-        },
-        {
-            id: 13,
-            title: "Water Mist",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe19.jpg"
-        },
-        {
-            id: 14,
-            title: "Clean Agent",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe20.jpg"
-        },
-        {
-            id: 15,
-            title: "ABC Powder Fire Extinguisher",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe21.jpg"
-        },
-        {
-            id: 16,
-            title: "Carbon Dioxide Fire Extinguisher",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe22.jpg"
-        },
-        {
-            id: 17,
-            title: "Wet Chemical Fire Extinguisher",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe23.jpg"
-        },
-        {
-            id: 18,
-            title: "Dry Powder Extinguisher",
-            snippet: "Special access, beach, its perks, and a remote top-tier service beauty of at restaurants beyond the throughout the weekends go city.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe24.jpg"
-        },
-        {
-            id: 19,
-            title: "Toronto's Portable 2L Fire Extinguisher",
-            snippet: "This fire extinguisher saved homes from completely burning down. People that used it only had 98% of their homes burned down.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe1.jpg"
-        },
-        {
-            id: 20,
-            title: "Empty Super Red Fire Extinguisher",
-            snippet: "This is one of the most red fire extinguishers you will ever see. Super clean. It's pretty much useless otherwise.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe2.jpg"
-        },
-        {
-            id: 21,
-            title: "Fire Extinguisher, Perfect for Pools",
-            snippet: "If you ever find that your pool is on fire then this is the fire extinguisher for you. It has a 100% success rate.",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe3.jpg"
-        },
-        {
-            id: 22,
-            title: "Vintage 1864 Fire Extinguisher",
-            snippet: "This is hands down the worst fire extinguisher you can use in a crisis. The radiation will kill you if the fire doesn't",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe4.jpg"
-        },
-        {
-            id: 23,
-            title: "Pure Silver & Gold Fire Extinguisher",
-            snippet: "This one is made out of 50k worth of pure silver and white gold. The metal choice was a poor for functionality, but was great for style!",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe5.jpg"
-        },
-        {
-            id: 24,
-            title: "Two in One Fire Extinguisher",
-            snippet: "This is the first ever two in one fire extinguisher. Good if both you and your friend's houses are burining down",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nobis omnis blanditiis eos, vitae accusamus rem eveniet veritatis voluptas expedita exercitationem at enim perspiciatis alias culpa sint sapiente! Omnis debitis velit nesciunt ratione alias eius officia nobis illum tempora et est iusto maiores possimus, ad aperiam necessitatibus voluptas quis quod, ab soluta sequi voluptate quibusdam. Reiciendis saepe iusto id totam!",
-            image: "fe6.jpg"
-        }
-    ]
+  darkMode: true,
+  likedCards: [],
+  cart: [],
+  allCards: [],
+  albums: [],
+  portrets: [],
+  glasses: [],
+  user: false,
+  authError: null,
+  smallCards: {
+    bests: {
+      id: 1,
+      title: 'Лучшие',
+      cards: []
+    },
+    populars: {
+      id: 2,
+      title: 'Популярные',
+      cards: []
+    }
+  },
+  customerReviews: []
 })
 
 
-export const getters = {
-    getProductById: (state) => (id) => {
-        return state.products.find(product => product.id === Number(id))
+export const mutations = {
+
+  setState(state, { data, reference }) {
+    state[reference] = data
+    for (const cardId in data.cards) {
+      data.cards[cardId].id = cardId
+      state.allCards.push(data.cards[cardId])
+      data.cards[cardId].bests && state.smallCards.bests.cards.push(data.cards[cardId])
+      data.cards[cardId].populars && state.smallCards.populars.cards.push(data.cards[cardId])
     }
+  },
+
+  updateUserPhotoMutation(state, userPhotoURL) {
+    state.user.photo = userPhotoURL
+  },
+
+  setAuthError(state, error) {
+    state.authError = error
+  },
+
+  clearAuthError(state) {
+    state.authError = null
+  },
+
+  ON_AUTH_STATE_CHANGED_MUTATION(state) {
+    state.user = false
+  },
+
+  setUserProfile(state, userProfile) {
+    state.user = userProfile
+    console.log('state_user', state.user);
+  },
+
+  updateUserProfile(state, updatedUserData) {
+    state.user.name = updatedUserData.name
+    state.user.email = updatedUserData.email
+    state.user.phone = updatedUserData.phone
+    state.user.bio = updatedUserData.bio
+  },
+
+  changeTheme(state) {
+    state.darkMode = !state.darkMode
+    localStorage.setItem('darkMode', JSON.stringify(state.darkMode))
+  },
+
+  initializeTheme(state) {
+    state.darkMode = JSON.parse(localStorage.getItem('darkMode'))
+  },
+
+  setCustomerReviews(state, data) {
+    for (const id in data) {
+      data[id].id = id
+    }
+    state.customerReviews = data
+    console.log(state.customerReviews);
+  },
+
+  /* LikedCard LocalStorage */
+
+
+  pushCardsToLikedCards(state, id) {
+    const likedCard = state.allCards.find(product => product.id === id)
+    state.likedCards.push(likedCard)
+    this.commit('updateLikedCardsLocalStorage')
+  },
+
+  deleteCardsFromLikedCards(state, deletingCard) {
+    state.likedCards = state.likedCards.filter(card => card !== deletingCard)
+    this.commit('updateLikedCardsLocalStorage')
+  },
+
+  updateLikedCardsLocalStorage(state) {
+    localStorage.setItem('likedItems', JSON.stringify(state.likedCards))
+  },
+
+  initializeLikedCards(state) {
+    state.likedCards = JSON.parse(localStorage.getItem('likedItems'))
+  },
+
+  /* Cart LocalStorage */
+
+
+  pushCardToCart(state, id) {
+    const orderedCard = state.allCards.find(product => product.id === id)
+    state.cart.push(orderedCard)
+    this.commit('updateCartLocalStorage')
+  },
+
+  deleteCardFromCart(state, deletingCard) {
+    state.cart = state.cart.filter(card => card !== deletingCard)
+    this.commit('updateCartLocalStorage')
+  },
+
+  updateCartLocalStorage(state) {
+    localStorage.setItem('cart', JSON.stringify(state.cart))
+  },
+
+  initializeCart(state) {
+    state.cart = JSON.parse(localStorage.getItem('cart'))
+  },
+
 }
 
 
-export const mutations = {
-    pushProductToRentals(state, id) {
-        state.myRentals.push(state.products.find(product => product.id === Number(id)))
-    },
+export const getters = {
 
-    darkModeActive(state) {
-        state.darkMode = true
-    },
-    lightModeActive(state) {
-        state.darkMode = false
-    },
+  getUserProfile: state => state.user,
+
+  getAuthError: state => state.authError,
+
+  getCardById: (state) => (id) => {
+    return state.allCards.find(product => product.id === id)
+  },
+
+  isCardLiked: (state) => (id) => {
+    return state.likedCards.find(likedCard => likedCard.id === id)
+  },
+
+  getLikedCards: (state) => state.likedCards,
+
+  getCardsInCart: (state) => state.cart,
+
+
+  isCardInCart: (state) => (id) => {
+    return state.cart.find(orderedCard => orderedCard.id === id)
+  },
+
+  getAlbums: (state) => state.albums,
+
+  getPortrets: (state) => state.portrets,
+
+  getGlasses: (state) => state.glasses,
+
+  getAllStateInOneArr: (state) => {
+    return [state.albums, state.portrets, state.glasses];
+  },
+
+  getStateByName: (state) => (stateName) => {
+    return state[stateName]
+  },
+
+  getSmallCards: state => state.smallCards,
+
+  getCustomerReviews: state => state.customerReviews
+
+}
+
+
+export const actions = {
+
+  async getDataByReferenceFromDb({ commit, dispatch }, reference) {
+    try {
+      const { data } = await axios.get(`${process.env.DATABASE_URL}/${reference}.json`)
+      commit('setState', { data, reference })
+
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  async getExactCardFromDb({ dispatch }, { stateName, cardId }) {
+    try {
+      const { data } = await axios.get(`${process.env.DATABASE_URL}/${stateName}/cards/${cardId}.json`)
+      return data
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  async getStateByNameFromDb({ dispatch }, stateName) {
+    try {
+      const { data } = await axios.get(`${process.env.DATABASE_URL}/${stateName}.json`)
+      return data
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  likedCardsHandler({ dispatch, commit, getters }, id) {
+    const card = getters.isCardLiked(id)
+    if (!!!card) {
+      commit('pushCardsToLikedCards', id)
+    } else {
+      commit('deleteCardsFromLikedCards', card)
+    }
+  },
+
+  cardsInCartHandler({ dispatch, commit, getters }, id) {
+    const card = getters.isCardInCart(id)
+    if (!!!card) {
+      commit('pushCardToCart', id)
+    } else {
+      commit('deleteCardFromCart', card)
+    }
+  },
+
+
+  /* User authentication with google web firebase  */
+
+  onAuthStateChangedAction: async (ctx, { authUser, claims }) => {
+    if (authUser) {
+      await ctx.dispatch('getUserProfileFromDb', authUser.uid)
+      console.log('onAuthStateChangedAction', ctx.rootState.user);
+    } else ctx.commit('ON_AUTH_STATE_CHANGED_MUTATION')
+  },
+
+  async getUserProfileFromDb({ state, dispatch, commit }, userUid) {
+    try {
+      const response = await this.$fire.database.ref(`users/${userUid}`)
+      const { data } = await axios.get(response.toString() + '.json')
+      console.log('getUserProfileFromDb', data);
+      if (data && !state.user) {
+        commit('setUserProfile', data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
+
+  async signInUserWithEmailAndPassword({ dispatch, commit }, userData) {
+    try {
+      const result = await this.$fire.auth.signInWithEmailAndPassword(
+        userData.email,
+        userData.password
+      )
+      const user = result.user
+      if (user) {
+        // TO-DO: find bag when loggin in and fetch for one time
+        await dispatch('getUserProfileFromDb', user.uid)
+        $nuxt.$router.push('/profile')
+        commit('clearAuthError')
+      }
+    } catch (error) {
+      commit('setAuthError', error)
+      console.log(error);
+    }
+  },
+
+  async createUserWithEmailAndPassword({ state, dispatch, commit }, userData) {
+    try {
+      const result = await this.$fire.auth.createUserWithEmailAndPassword(
+        userData.email,
+        userData.password
+      )
+      const user = result.user
+      if (user) {
+        const data = {
+          uid: user.uid,
+          name: userData.name,
+          photo: process.env.DEFAULT_PROFILE_PHOTO,
+          phone: userData.phone,
+          email: userData.email,
+          password: userData.password,
+          orders: '',
+          coupons: '',
+          bio: ''
+        }
+        commit('clearAuthError')
+        commit('setUserProfile', data)
+        console.log('router to profile from create user', state.user);
+        $nuxt.$router.push('/profile')
+        await this.$fire.database.ref('users').child(user.uid).update(data)
+      }
+    } catch (error) {
+      commit('setAuthError', error)
+      console.log(error);
+    }
+  },
+
+  async signInWithGoogle({ state, dispatch, commit }) {
+    try {
+      const provider = await new this.$fireModule.auth.GoogleAuthProvider()
+      const result = await this.$fire.auth.signInWithPopup(provider)
+      const user = result.user
+
+      if (user) {
+        await this.$fire.database.ref('users').on('value', (e) => {
+          const usersInDatabase = e.val()
+          console.log('usersInDatabase', usersInDatabase);
+          let isUserInDatabase
+          if (usersInDatabase) {
+            isUserInDatabase = Object.keys(usersInDatabase).find(id => id === user.uid)
+          } else {
+            isUserInDatabase = false
+          }
+          console.log('isUserInDatabase', !!isUserInDatabase);
+          if (!!!isUserInDatabase) {
+            console.log('user is new');
+            const data = {
+              uid: user.uid,
+              name: user.displayName,
+              photo: user.photoURL,
+              phone: user.phoneNumber ? user.phoneNumber : '',
+              email: user.email,
+              orders: '',
+              coupons: '',
+              bio: ''
+            }
+            commit('setUserProfile', data)
+            this.$fire.database.ref(`users/${user.uid}`).update(data)
+          }
+          console.log('router to profile from google signin', state.user);
+          $nuxt.$router.push('/profile')
+        })
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  async signOut({ dispatch }) {
+    await this.$fire.auth.signOut()
+  },
+
+  async updateUserProfile({ state, dispatch, commit }, updatedUserData) {
+    try {
+      await this.$fire.database.ref('users').child(state.user.uid).update({
+        name: updatedUserData.name,
+        phone: updatedUserData.phone,
+        email: updatedUserData.email,
+        bio: updatedUserData.bio,
+      })
+      commit('updateUserProfile', updatedUserData)
+      console.log('updated');
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  async updateUserPhoto({ state, dispatch, commit }, userPhoto) {
+    const userPhotoStorageRef = await this.$fire.storage
+      .ref('user_avatars')
+      .child(state.user.uid) // same uid with user's data beacuse same uid deletes old photo and puts new
+    await userPhotoStorageRef.put(userPhoto)
+    const userPhotoURL = await userPhotoStorageRef.getDownloadURL()
+    commit('updateUserPhotoMutation', userPhotoURL)
+    await this.$fire.database.ref('users').child(state.user.uid).update({
+      photo: userPhotoURL
+    })
+  },
+
+  async publishReviewToDb({ dispatch, commit }, review) {
+    await this.$fire.database.ref('reviews').push(review)
+  },
+
+  async getCustomerReviewsFromDb({ dispatch, commit }) {
+    try {
+      const { data } = await axios.get(`${process.env.DATABASE_URL}/reviews.json`)
+      commit('setCustomerReviews', data)
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  async orderProduct(dispatch, orderInfo) {
+    try {
+      const URL = `https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage?chat_id=${process.env.BOT_CHAT_ID}&text=${orderInfo}&parse_mode=html`
+      await fetch(URL);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  async addOrderToUserProfile({ state, dispatch }, orderedProduct) {
+    try {
+      if (!state.user) {
+        return
+      }
+      await this.$fire.database.ref(`users/${state.user.uid}`).child('orders').push(orderedProduct)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

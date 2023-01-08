@@ -1,8 +1,8 @@
 export const largeCardSections = [
     {
         id: 1,
-        title: "Top-rated Fire Extinguisher in Niagara",
-        snippet: "User say these are the best fire extinguishers to rent if your house is burning down.",
+        title: "Alboms",
+        snippet: "In users' opinion alboms are best way to expect feelings",
         cards: [
             {
                 id: 19,
@@ -21,7 +21,26 @@ export const largeCardSections = [
                 title: "Fire Extinguisher, Perfect for Pools",
                 snippet: "If you ever find that your pool is on fire then this is the fire extinguisher for you. It has a 100% success rate.",
                 image: "fe3.jpg"
+            },
+            {
+                id: 210,
+                title: "Empty Super Red Fire Extinguisher",
+                snippet: "This is one of the most red fire extinguishers you will ever see. Super clean. It's pretty much useless otherwise.",
+                image: "fe2.jpg"
+            },
+            {
+                id: 211,
+                title: "Fire Extinguisher, Perfect for Pools",
+                snippet: "If you ever find that your pool is on fire then this is the fire extinguisher for you. It has a 100% success rate.",
+                image: "fe3.jpg"
+            },
+            {
+                id: 212,
+                title: "Fire Extinguisher, Perfect for Pools",
+                snippet: "If you ever find that your pool is on fire then this is the fire extinguisher for you. It has a 100% success rate.",
+                image: "fe3.jpg"
             }
+
         ]
     },
     {
@@ -54,7 +73,7 @@ export const largeCardSections = [
 export const smallCardSections = [
     {
         id: 1,
-        title: "Fire Extinguisher in Toronto",
+        title: "Лучшие",
         cards: [
             {
                 id: 1,
@@ -108,7 +127,7 @@ export const smallCardSections = [
     },
     {
         id: 2,
-        title: "Fire Extinguisher in Niagara",
+        title: "Популярные",
         cards: [
             {
                 id: 13,

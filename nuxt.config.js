@@ -1,7 +1,8 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+
   head: {
-    title: 'client',
+    title: 'Florida',
     htmlAttrs: {
       lang: 'en',
     },
@@ -15,23 +16,19 @@ export default {
   },
 
   target: 'static',
-  // router: {
-  //   base: 'https://ravshanovich99.github.io/FireExtinguisher/'
-  // },
+  router: {
+    base: '/FloridaGifts/'
+  },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ["./assets/main.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {
-      src: './plugins/vue-calendar.js',
-      mode: 'client'
-    },
-    {
       src: './plugins/vue-icons.js',
       mode: 'client'
-    }
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,6 +38,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    '@nuxtjs/dotenv'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -49,6 +47,32 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    [
+      '@nuxtjs/firebase',
+
+      {
+        config: {
+          apiKey: process.env.API_KEY,
+          authDomain: process.env.AUTH_DOMAIN,
+          databaseURL: process.env.DATABASE_URL,
+          projectId: process.env.PROJECT_ID,
+          storageBucket: process.env.STORAGE_BUCKET,
+          messagingSenderId: process.env.MESSAGING_SENDER_ID,
+          appId: process.env.APP_ID,
+          measurementId: process.env.MEASURMENT_ID
+        },
+
+        services: {
+          auth: {
+            initialize: {
+              onAuthStateChangedAction: 'onAuthStateChangedAction',
+            }
+          },
+          database: true,
+          storage: true
+        }
+      }
+    ]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

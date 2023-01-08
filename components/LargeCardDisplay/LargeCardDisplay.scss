@@ -1,0 +1,44 @@
+@import '../../assets/main.scss';
+
+.largeCardDisplay {
+    margin-top: 2rem;
+    padding-top: 6rem;
+
+    .header {
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+
+    .snippet {
+        color: $cl_grey;
+        margin-bottom: 1.5rem;
+    }
+
+    .see-all-link {
+        padding-top: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        text-decoration: underline;
+    }
+
+    .see-all {
+        color: $cl_green;
+        font-size: 1.2rem;
+    }
+
+    .see-all.dark {
+        color: $cl_yellow;
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 567px) {
+        .container {
+            padding-top: 50px;
+        }
+
+        .see-all {
+            font-size: 0.8rem;
+        }
+    }
+}

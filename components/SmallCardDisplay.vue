@@ -1,14 +1,15 @@
 <template>
   <div class="container">
-    <h1 class="header">
+    <h2 class="header">
       {{ cardsInfo.title }}
-    </h1>
+    </h2>
     <div class="card-container">
       <SmallCard
-        v-for="cardsImage in cardsInfo.cards"
-        :id="cardsImage.id"
-        :key="cardsImage.id"
-        :image="cardsImage.image"
+        v-for="card in cardsInfo.cards"
+        :id="card.id"
+        :key="card.id"
+        :image="card.images[0]"
+        :stateName="card.stateName"
       />
     </div>
   </div>
@@ -16,12 +17,7 @@
 
 <script>
 export default {
-  props: {
-    cardsInfo: {
-      type: Object,
-      required: true,
-    },
-  },
+  props: ['cardsInfo'],
 }
 </script>
 
@@ -32,7 +28,6 @@ export default {
 .header {
   font-weight: 700;
   font-size: 1.5rem;
-  margin-bottom: 2rem;
 }
 .card-container {
   display: flex;

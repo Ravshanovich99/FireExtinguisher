@@ -1,14 +1,22 @@
 <template>
-  <div class="review-card">
-    <div class="image-container">
-      <img :src="review.picture.large" alt="image" />
-    </div>
-    <div class="text-container">
-      <h6>{{ review.login.username }}</h6>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus
-        quam magni beatae possimus debitis.
-      </p>
+  <div>
+    <div v-if="$route.params.id === review.cardId" class="review-card">
+      <div class="image-container">
+        <img :src="review.userPhoto" alt="image" />
+      </div>
+      <div class="text-container">
+        <h6>{{ review.userName }}</h6>
+        <b-form-rating
+          id="rating-inline"
+          no-border
+          inline
+          readonly
+          :value="review.rate"
+        ></b-form-rating>
+        <p>
+          {{ review.review }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -26,8 +34,7 @@ export default {
 
 <style scoped>
 .review-card {
-  margin-top: 1.5rem;
-  height: 4rem;
+  margin: 1.5rem 0;
   display: flex;
 }
 .text-container {
@@ -40,5 +47,13 @@ img {
 }
 p {
   color: grey;
+  margin: 0;
+}
+h6 {
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+#rating-inline {
+  padding: 0;
 }
 </style>

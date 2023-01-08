@@ -1,0 +1,85 @@
+@import '../../assets/main.scss';
+
+.form-group>label {
+    bottom: 34px;
+    left: 15px;
+    position: relative;
+    background-color: $cl_green;
+    padding: 0px 5px 0px 5px;
+    font-size: 1.1em;
+    transition: 0.3s;
+    pointer-events: none;
+    color: $cl_white;
+}
+
+.form-group {
+    position: relative;
+
+    .textarea-label {
+        background: $cl_dark-bg;
+    }
+
+    .textarea-label-dark {
+        background: $cl_white;
+        color: $cl_black;
+    }
+
+}
+
+#textarea-dark {
+    border: 1px solid $cl_green;
+    color: $cl_black !important;
+}
+
+
+.form-control {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid $cl_yellow;
+    color: $cl_white !important;
+
+    &.error {
+        border: 1px solid $danger;
+    }
+
+    &:focus {
+        background-color: transparent;
+    }
+}
+
+.form-control.error~label {
+    color: $danger;
+}
+
+.error-massage {
+    color: $danger;
+    position: absolute;
+    left: 0;
+    font-size: 14px;
+
+    @media (max-width: 417px) {
+        position: relative;
+        left: 0;
+        top: -30px;
+    }
+}
+
+.form-control:focus~label {
+    bottom: 55px;
+}
+
+.form-control:valid~label {
+    bottom: 55px;
+}
+
+.form-control.textarea:focus~label {
+    bottom: 80px;
+}
+
+.form-control.textarea:valid~label {
+    bottom: 80px;
+}
+
+.form-control.textarea~label {
+    bottom: 55px;
+}

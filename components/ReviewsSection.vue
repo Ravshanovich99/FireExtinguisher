@@ -1,19 +1,24 @@
 <template>
   <div>
-    <h3>Customer Reviews</h3>
-    <div v-if="reviewers">
+    <h4>Отзывы {{ productName }}</h4>
+    <div>
       <ReviewCard
-        v-for="reviewer in reviewers.results"
-        :key="reviewer.login.uuid"
+        v-for="reviewer in reviews"
+        :key="reviewer.userPhoto"
         :review="reviewer"
       />
     </div>
-    <div v-else>Loading...</div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    productName: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
     return {
       reviewers: null,
@@ -21,9 +26,14 @@ export default {
     }
   },
 
-  async fetch() {
-    const response = await fetch('https://randomuser.me/api/?results=5')
-    this.reviewers = await response.json()
+  computed: {
+    reviews() {
+      return this.$store.getters.getCustomerReviews
+    },
+  },
+
+  async mounted() {
+    await this.$store.dispatch('getCustomerReviewsFromDb')
   },
 }
 </script>

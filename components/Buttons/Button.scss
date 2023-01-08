@@ -1,0 +1,74 @@
+@import '../../assets/main.scss';
+
+.button {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid transparent;
+    color: $cl_green;
+    font-weight: 700;
+    border-radius: 100rem;
+    background-color: $cl_yellow;
+    font-weight: 700;
+    transition: 0.5s;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 1.3rem;
+    box-shadow: rgba(248, 183, 70, 0.5) 0px 5px 15px 0px;
+    @include df-center;
+    padding: 1rem 4rem;
+
+    @include lg {
+        padding: 1rem 2rem;
+    }
+
+    @include md {
+        padding: 0.7rem 1rem;
+        font-size: 1rem;
+    }
+
+    @include sm {
+        padding: 0.5rem 0.6rem;
+    }
+
+    &.dark {
+        box-shadow: rgba(0, 0, 0) 0px 5px 15px 0px;
+    }
+
+    &:hover {
+        background: transparent;
+        border: 2px solid $cl_yellow;
+        color: $cl_yellow;
+        box-shadow: rgba(248, 183, 70, 0.12) 0px 2px 4px 0px, rgba(248, 183, 70) 0px 2px 16px 0px;
+    }
+
+    &.dark {
+        background-color: $cl_green;
+        color: $cl_yellow;
+
+        &:hover {
+            background: transparent;
+            border: 2px solid $cl_green;
+            color: $cl_green;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37) 0px 2px 16px 0px;
+        }
+    }
+}
+
+.button-info {
+    @include df-between;
+}
+
+.disabled {
+    cursor: not-allowed !important;
+    background: $disabled;
+    box-shadow: none;
+    color: $cl_white;
+    border: 1px solid transparent;
+
+    &:hover {
+        border: 1px solid transparent;
+        color: $cl_white;
+        box-shadow: none;
+        background: $disabled;
+    }
+}

@@ -1,125 +1,107 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
-  <div v-if="getProduct" class="container py-5">
-    <div class="hero-container">
-      <img
-        :src="require(`@/assets/images/${getProduct.image}`)"
-        alt="image"
-        class="image"
-      />
+  <div v-if="product" class="container py-2">
+    <div class="hero container">
+      <div class="media-container">
+        <hooper class="image-carousel">
+          <slide v-for="image in product.images" :key="image" class="slide">
+            <img :src="image" alt="image" />
+          </slide>
+          <hooper-pagination slot="hooper-addons"></hooper-pagination>
+        </hooper>
+        <div v-if="product.video" class="video-container">
+          <video
+            controls
+            type="iframe"
+            aspect="16by9"
+            allowfullscreen
+            :src="product.video"
+          ></video>
+        </div>
+      </div>
       <div class="info-box">
-        <h1>{{ getProduct.title }}</h1>
-        <p class="snippet">{{ getProduct.snippet }}</p>
-        <RentModal />
+        <div class="product-info">
+          <h1 class="title">{{ product.title }}</h1>
+          <p class="snippet">{{ product.description }}</p>
+          <div v-if="product.stateName !== 'glasses'" class="product-prices">
+            <b-form-radio
+              v-for="price of product.prices"
+              :key="price.price"
+              v-model="selectedSize"
+              :value="`${price.width} x ${price.height}`"
+              class="price-radio"
+              ><div class="price-radio__info">
+                {{ price.width }} x {{ price.height }}
+                <span class="price">{{ price.price }} сум</span>
+              </div></b-form-radio
+            >
+          </div>
+          <div v-else>{{ product.prices }} cум</div>
+        </div>
+        <OrderModal
+          :orderingProduct="product"
+          :selectedSize="selectedSize"
+          @showSizeToast="showSizeToast"
+          @showOrderedToast="showOrderedToast"
+        />
       </div>
-    </div>
-    <div class="whats-included-container">
-      <div class="included-container">
-        <h6>Super Effective</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-          dolorem.
-        </p>
-      </div>
-      <div class="included-container">
-        <h6>Clean & Tidy</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-          dolorem.
-        </p>
-      </div>
-      <div class="included-container">
-        <h6>Cancel Anytime</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-          dolorem.
-        </p>
-      </div>
-      <div class="included-container">
-        <h6>Satisfaction Guaranteed</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-          dolorem.
-        </p>
-      </div>
+      <Toast
+        :toastId="'product-size-toast'"
+        :text="'Сначала выберите размер'"
+      />
+      <Toast
+        :toastId="'ordered-toast'"
+        :text="'Ваш заказ принято! \n Мы свяжемся с вами очень скоро'"
+      />
     </div>
     <div class="description-container">
       <p>
-        {{ getProduct.description }}
+        {{ product.description }}
       </p>
     </div>
-    <ReviewsSection />
+    <ReviewsSection :productName="product.title" />
+    <div class="rate-container">
+      <div v-if="rateForm" class="rate active">
+        <RateForm v-if="$store.state.user" />
+      </div>
+    </div>
   </div>
-  <div v-else class="container padding">
-    <PageNotFound />
-  </div>
+  <LoaderSkeleton v-else :productIdPage="true" />
 </template>
 
 <script>
+import './productId.scss'
+import 'hooper/dist/hooper.css'
+import { Hooper, Slide, Pagination as HooperPagination } from 'hooper'
 export default {
-  computed: {
-    getProduct() {
-      return this.$store.getters.getProductById(this.$route.params.id)
+  components: { Hooper, Slide, HooperPagination },
+  data() {
+    return {
+      selectedSize: '',
+      rateForm: true,
+      product: null,
+    }
+  },
+  async mounted() {
+    const stateName = this.$route.query.search
+    const cardId = this.$route.params.id
+    this.product = await this.$store.getters.getCardById(cardId)
+    if (!this.product) {
+      this.product = await this.$store.dispatch('getExactCardFromDb', {
+        stateName,
+        cardId,
+      })
+      console.log('product is reloaded', this.product)
+    }
+  },
+
+  methods: {
+    showSizeToast() {
+      this.$bvToast.show('product-size-toast')
+    },
+    showOrderedToast() {
+      this.$bvToast.show('ordered-toast')
     },
   },
 }
 </script>
-
-<style scoped>
-.hero-container {
-  display: flex;
-  justify-content: space-between;
-}
-.image {
-  width: 59%;
-  height: 25rem;
-}
-.info-box {
-  width: 39%;
-  background-color: #0b4f52;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  color: #fff;
-}
-.whats-included-container {
-  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.151);
-}
-.description-container {
-  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.151);
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
-}
-.included-container {
-  margin-top: 1.5rem;
-}
-h1 {
-  font-size: 1.75rem;
-}
-h6 {
-  font-size: 1.15rem;
-  font-weight: 400;
-}
-p {
-  color: grey;
-}
-.snippet {
-  color: rgba(0, 0, 0, 0.774);
-  margin-top: 1rem;
-}
-button {
-  width: 100%;
-  border: none;
-  padding: 0.5rem;
-  color: white;
-  font-weight: 700;
-  padding: 1rem 4rem;
-  border-radius: 100rem;
-  background-color: rgb(231, 81, 43);
-  color: white;
-  font-weight: 700;
-  transition: 0.5s;
-}
-.description-container {
-  margin-top: 3rem;
-  color: grey;
-}
-</style>

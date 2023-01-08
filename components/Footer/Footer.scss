@@ -1,0 +1,78 @@
+@import '../../assets/main.scss';
+
+.footer {
+    padding-top: 2rem;
+
+    &.dark {
+        background: $cl_dark-bg !important;
+    }
+
+    .border-bottom-yellow {
+        border-bottom: 1px solid $cl_yellow ;
+    }
+
+    .border-bottom-green {
+        border-bottom: 1px solid $cl_green ;
+    }
+
+    .logo-image {
+        width: 40%;
+        height: 50%;
+
+        @include lg {
+            width: 50%;
+            height: 55%;
+        }
+
+        @include md {
+            width: 25%;
+            height: 40%;
+        }
+
+        @include sm {
+            width: 32%;
+            height: 45%;
+        }
+    }
+
+    .logo-name {
+        font-family: 'Romla-Regular';
+        font-size: 1.7rem;
+        margin: 0;
+
+        @include sm {
+            font-size: 1.2rem;
+        }
+    }
+
+    .logo-name-bottom {
+        font-family: 'Romla-Regular';
+    }
+
+    .social-links {
+        @include df-center;
+
+        .border-top-yellow {
+            padding: 1rem 0;
+            width: 60%;
+            border-top: 1px solid $cl_yellow ;
+        }
+
+        .border-top-green {
+            padding: 1rem 0;
+            width: 60%;
+            border-top: 1px solid $cl_green ;
+        }
+
+        .social-link {
+            font-size: 1.6rem;
+            color: $cl_grey;
+            margin-left: 12px;
+            transition: 0.3s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}

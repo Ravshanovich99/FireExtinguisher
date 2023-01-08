@@ -1,13 +1,13 @@
 <template>
-  <div class="container">
+  <div class="container py-5">
     <LargeCardDisplay
-      v-for="cardInfo in largeCardInfo.slice(0, 1)"
+      v-for="cardInfo in getStates"
       :key="cardInfo.id"
       :cardsInfo="cardInfo"
     />
 
     <SmallCardDisplay
-      v-for="cardInfo in smallCardInfo"
+      v-for="cardInfo in smallCard"
       :key="cardInfo.id"
       :cardsInfo="cardInfo"
     />
@@ -15,16 +15,33 @@
 </template>
 
 <script>
-import { largeCardSections, smallCardSections } from '@/assets/data.js'
 export default {
   data() {
     return {
-      largeCardInfo: largeCardSections,
-      smallCardInfo: smallCardSections,
+      smallCardInfo: {
+        id: 1,
+        title: 'Лучшие',
+        cards: [],
+      },
     }
+  },
+
+  computed: {
+    getStates() {
+      return this.$store.getters.getAllStateInOneArr
+    },
+    smallCard() {
+      return this.$store.getters.getSmallCards
+    },
+  },
+
+  async mounted() {
+    await this.$store.dispatch('getDataByReferenceFromDb', 'albums')
+    await this.$store.dispatch('getDataByReferenceFromDb', 'portrets')
+    await this.$store.dispatch('getDataByReferenceFromDb', 'glasses')
   },
 }
 </script>
 
-<style>
+<style scoped>
 </style>

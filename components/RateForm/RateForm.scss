@@ -1,0 +1,81 @@
+@import '../../assets/main.scss';
+
+.rate-form {
+    margin: 2rem 0;
+    padding: 3rem;
+    box-sizing: border-box;
+
+    @include md {
+        padding: 2rem;
+    }
+
+    @include sm {
+        padding: 1.1rem;
+    }
+
+    .user-details {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        justify-content: space-between;
+
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            padding-bottom: 1.5rem;
+
+            img {
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+
+                @include md {
+                    width: 2.5rem;
+                    height: 2.5rem;
+                }
+            }
+
+            .user-name {
+                margin-left: 10px;
+            }
+        }
+
+        .form-groups {
+            width: 100%;
+
+            .form-group {
+                margin: 0;
+            }
+        }
+    }
+
+    .rate-inp.dark {
+        border: 1px solid $cl_yellow;
+    }
+
+    .rate-inp {
+        border: 1px solid $cl_green;
+    }
+
+    .publish-btn {
+        padding-top: rem(20);
+        display: flex;
+        justify-content: flex-end;
+
+        .button-container {
+            width: 30% !important;
+
+            @include md {
+                width: 50% !important;
+            }
+
+            .button {
+                padding: 0.5rem;
+            }
+
+        }
+
+
+    }
+}
