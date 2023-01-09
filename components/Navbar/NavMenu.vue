@@ -63,7 +63,7 @@
       </li>
       <li v-if="$store.state.user" class="nav-item user-avatar">
         <NuxtLink to="/profile">
-          <img :src="$store.state.user?.photo" alt="photo" />
+          <img :src="$store.state.user.photo" alt="photo" />
           <p v-if="burgerMenuOpen">{{ $store.state.user?.name }}</p>
         </NuxtLink>
       </li>

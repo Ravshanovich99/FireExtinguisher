@@ -8,7 +8,7 @@
 
     <SmallCardDisplay
       v-for="cardInfo in smallCard"
-      :key="cardInfo.id"
+      :key="cardInfo.urlsId"
       :cardsInfo="cardInfo"
     />
   </div>
@@ -16,18 +16,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      smallCardInfo: {
-        id: 1,
-        title: 'Лучшие',
-        cards: [],
-      },
-    }
-  },
-
   computed: {
     getStates() {
+      if (this.$store.state.glasses.length === 0) return
       return this.$store.getters.getAllStateInOneArr
     },
     smallCard() {
