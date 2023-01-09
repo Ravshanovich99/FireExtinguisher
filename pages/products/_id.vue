@@ -91,7 +91,7 @@ export default {
         stateName,
         cardId,
       })
-      console.log('product is reloaded', this.product)
+      // console.log('product is reloaded', this.product)
     }
   },
 

@@ -43,7 +43,7 @@ export default {
 
   async mounted() {
     const { data } = await this.$axios.$get(
-      'https://florida-gift-default-rtdb.firebaseio.com/hero_page.json'
+      `${process.env.DATABASE_URL}/hero_page.json`
     )
     this.data = data
   },
