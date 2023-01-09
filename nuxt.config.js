@@ -27,7 +27,8 @@ export default {
   plugins: [
     {
       src: './plugins/vue-icons.js',
-      mode: 'client'
+      mode: 'client',
+      ssr: false
     },
   ],
 

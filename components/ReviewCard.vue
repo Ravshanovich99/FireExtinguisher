@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="$route.params.id === review.cardId" class="review-card">
+    <div v-show="$route.params.id === review.cardId" class="review-card">
       <div class="image-container">
         <img :src="review.userPhoto" alt="image" />
       </div>

@@ -9,7 +9,7 @@
           </slide>
           <hooper-pagination slot="hooper-addons"></hooper-pagination>
         </hooper>
-        <div v-if="product.video" class="video-container">
+        <div v-show="product.video" class="video-container">
           <video
             controls
             type="iframe"
@@ -61,8 +61,8 @@
     </div>
     <ReviewsSection :productName="product.title" />
     <div class="rate-container">
-      <div v-if="rateForm" class="rate active">
-        <RateForm v-if="$store.state.user" />
+      <div v-show="rateForm" class="rate active">
+        <RateForm v-show="$store.state.user" />
       </div>
     </div>
   </div>

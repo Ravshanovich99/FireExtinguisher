@@ -4,7 +4,7 @@
     <h4 class="header">{{ cardsInfo?.title }}</h4>
     <p class="snippet">{{ cardsInfo?.subtitle }}</p>
     <LargeCard :cards="cardsInfo.cards" :cardsWithSlider="cardsWithSlider" />
-    <div v-if="cardsWithSlider" class="see-all-link">
+    <div v-show="cardsWithSlider" class="see-all-link">
       <NuxtLink
         :to="`/${cardsInfo.stateName}`"
         :class="$store.state.darkMode ? 'see-all dark' : 'see-all'"

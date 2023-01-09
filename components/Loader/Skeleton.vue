@@ -1,5 +1,5 @@
 <template>
-  <div v-if="productIdPage" class="container">
+  <div v-show="productIdPage" class="container">
     <div class="skeletons-container">
       <div class="skeletons-left">
         <b-card class="skeleton">

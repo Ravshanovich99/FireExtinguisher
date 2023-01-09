@@ -3,12 +3,13 @@
     <div class="text-container">
       <h1 class="header">{{ data?.title }}</h1>
       <p class="snippet">{{ data?.subtitle }}</p>
-      <NuxtLink to="/products">
+      <div class="hero-button">
         <ButtonsButton
           :text="'Посмотреть все'"
           :dark="!$store.state.darkMode"
+          @click="$router.push('/products')"
         />
-      </NuxtLink>
+      </div>
     </div>
     <div class="blob">
       <img
