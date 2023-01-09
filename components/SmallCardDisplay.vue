@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="container">
     <h2 class="header">
@@ -7,7 +8,7 @@
       <SmallCard
         v-for="card in cardsInfo.cards"
         :id="card.id"
-        :key="card.id"
+        :key="card.id + generateUid()"
         :image="card.images[0]"
         :stateName="card.stateName"
       />
@@ -16,8 +17,19 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from 'uuid'
 export default {
-  props: ['cardsInfo'],
+  props: {
+    cardsInfo: {
+      type: Object,
+      default: null,
+    },
+  },
+  methods: {
+    generateUid() {
+      return uuidv4()
+    },
+  },
 }
 </script>
 
