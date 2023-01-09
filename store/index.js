@@ -187,7 +187,7 @@ export const actions = {
       commit('setState', { data, reference })
 
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   },
 
@@ -196,7 +196,7 @@ export const actions = {
       const { data } = await axios.get(`${process.env.DATABASE_URL}/${stateName}/cards/${cardId}.json`)
       return data
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   },
 
@@ -205,7 +205,7 @@ export const actions = {
       const { data } = await axios.get(`${process.env.DATABASE_URL}/${stateName}.json`)
       return data
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   },
 
@@ -246,7 +246,7 @@ export const actions = {
         commit('setUserProfile', data)
       }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   },
 
@@ -266,7 +266,7 @@ export const actions = {
       }
     } catch (error) {
       commit('setAuthError', error)
-      console.log(error);
+      // console.log(error);
     }
   },
 
@@ -297,7 +297,7 @@ export const actions = {
       }
     } catch (error) {
       commit('setAuthError', error)
-      console.log(error);
+      // console.log(error);
     }
   },
 
@@ -317,7 +317,7 @@ export const actions = {
           } else {
             isUserInDatabase = false
           }
-          console.log('isUserInDatabase', !!isUserInDatabase);
+          // console.log('isUserInDatabase', !!isUserInDatabase);
           if (!!!isUserInDatabase) {
             // console.log('user is new');
             const data = {
@@ -339,7 +339,7 @@ export const actions = {
       }
 
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   },
 
@@ -358,7 +358,7 @@ export const actions = {
       commit('updateUserProfile', updatedUserData)
       // console.log('updated');
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   },
 
@@ -383,7 +383,7 @@ export const actions = {
       const { data } = await axios.get(`${process.env.DATABASE_URL}/reviews.json`)
       commit('setCustomerReviews', data)
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   },
 
@@ -392,7 +392,7 @@ export const actions = {
       const URL = `https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage?chat_id=${process.env.BOT_CHAT_ID}&text=${orderInfo}&parse_mode=html`
       await fetch(URL);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   },
 
@@ -403,7 +403,7 @@ export const actions = {
       }
       await this.$fire.database.ref(`users/${state.user.uid}`).child('orders').push(orderedProduct)
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 }
