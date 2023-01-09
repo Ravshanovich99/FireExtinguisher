@@ -9,7 +9,7 @@
       @click="$emit('click')"
     >
       <div class="button-info">
-        <b-icon v-if="icon" class="b-icon" :icon="icon"></b-icon>
+        <b-icon v-show="icon" class="b-icon" :icon="icon"></b-icon>
         <div class="button-text">{{ text }}</div>
       </div>
     </button>

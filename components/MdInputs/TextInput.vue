@@ -14,7 +14,9 @@
         "
       />
       <label :for="type">{{ placeholder }}</label>
-      <span v-if="errorMassage" class="error-massage">{{ errorMassage }}</span>
+      <span v-show="errorMassage" class="error-massage">{{
+        errorMassage
+      }}</span>
     </div>
   </div>
 </template>

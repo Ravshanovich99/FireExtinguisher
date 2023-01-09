@@ -18,7 +18,7 @@
         :class="textareaDark ? 'textarea-label-dark' : 'textarea-label'"
         >{{ placeholder }}</label
       >
-      <small v-if="errorMassage" class="error-massage">{{
+      <small v-show="errorMassage" class="error-massage">{{
         errorMassage
       }}</small>
     </div>

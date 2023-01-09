@@ -11,7 +11,7 @@
         @input="$emit('input', $event.target.value)"
       />
       <label for="email">{{ placeholder }}</label>
-      <span v-if="errorMassage.length" class="error-massage">{{
+      <span v-show="errorMassage.length" class="error-massage">{{
         errorMassage
       }}</span>
     </div>

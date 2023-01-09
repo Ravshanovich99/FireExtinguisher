@@ -9,12 +9,14 @@
       }"
     >
       <div class="input-group-container">
-        <h3 v-if="loginInputs" class="input-group-title">Вход в аккаунт</h3>
-        <h3 v-if="signUpInputs" class="input-group-title">Зарегистрирование</h3>
+        <h3 v-show="loginInputs" class="input-group-title">Вход в аккаунт</h3>
+        <h3 vshow="signUpInputs" class="input-group-title">
+          Зарегистрирование
+        </h3>
 
         <!-- Sign up Inputs -->
         <form
-          v-if="signUpInputs"
+          v-show="signUpInputs"
           class="form-container"
           @submit.prevent="signUpHandler"
         >
@@ -61,7 +63,7 @@
 
         <!-- Login Inputs -->
         <form
-          v-if="loginInputs"
+          v-show="loginInputs"
           class="form-container"
           @submit.prevent="loginHandler"
         >
@@ -93,7 +95,7 @@
         </form>
 
         <!-- Order Inputs -->
-        <form v-if="orderInputs" @submit.prevent="orderProduct">
+        <form v-show="orderInputs" @submit.prevent="orderProduct">
           <MdInputsTextInput
             v-model="orderData.name"
             :type="'text'"
@@ -117,7 +119,7 @@
 
         <!-- Settings Inputs -->
         <form
-          v-if="settingsInputs"
+          v-show="settingsInputs"
           novalidate
           class="form-container profile-settings"
           @submit.prevent="updateUserProfile"

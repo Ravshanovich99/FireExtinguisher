@@ -56,6 +56,18 @@
         width: fit-content;
         text-decoration: none !important;
     }
+
+    .hero-button {
+        .button-container {
+            .button {
+                width: 70%;
+
+                @include sm {
+                    width: 80%;
+                }
+            }
+        }
+    }
 }
 
 
