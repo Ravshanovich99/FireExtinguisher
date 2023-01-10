@@ -35,6 +35,23 @@
 <script>
 import './Reviews.scss'
 export default {
+  data() {
+    return {
+      title: 'Отзывы',
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Подарки на любой вкус',
+        },
+      ],
+    }
+  },
   computed: {
     reviews() {
       return this.$store.getters.getCustomerReviews

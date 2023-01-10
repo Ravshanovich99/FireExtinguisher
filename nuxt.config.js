@@ -4,24 +4,34 @@ export default {
   head: {
     title: 'Florida',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ru',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Подарки на любой вкус',
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content:
+          "gifts, подарки, подарки в ташкенте, подарки на день рождения, подарочные альбомы, подарочные портреты, день рождения, tug'ilgan kun, tug'ilgan kun uchun sovg'alar, sovg'alar, florida",
+      },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
   },
 
   target: 'static',
   router: {
-    base: '/FloridaGifts/'
+    base: '/FloridaGifts/',
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ["./assets/main.scss"],
+  css: ['./assets/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -38,7 +48,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -59,20 +69,20 @@ export default {
           storageBucket: process.env.STORAGE_BUCKET,
           messagingSenderId: process.env.MESSAGING_SENDER_ID,
           appId: process.env.APP_ID,
-          measurementId: process.env.MEASURMENT_ID
+          measurementId: process.env.MEASURMENT_ID,
         },
 
         services: {
           auth: {
             initialize: {
               onAuthStateChangedAction: 'onAuthStateChangedAction',
-            }
+            },
           },
           database: true,
-          storage: true
-        }
-      }
-    ]
+          storage: true,
+        },
+      },
+    ],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

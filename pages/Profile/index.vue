@@ -63,6 +63,23 @@
 import './Profile.scss'
 export default {
   middleware: 'auth',
+  data() {
+    return {
+      title: 'Профиль',
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Подарки на любой вкус',
+        },
+      ],
+    }
+  },
   computed: {
     userProfile() {
       return this.$store.getters.getUserProfile
