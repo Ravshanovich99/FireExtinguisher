@@ -1,15 +1,24 @@
 <template>
-  <div class="container cart cards-container">
-    <Card
-      v-for="cardInCart in cardsInCart"
-      :key="cardInCart.id"
-      :card="cardInCart"
+  <div class="container cart">
+    <EmptyInfo
+      v-if="!cardsInCart.length"
+      title="В корзине пока ничего нет"
+      text="Добавляйте первый"
+      path="/products"
+      btn-text="Перейти к покупкам"
     />
-    <!-- <ButtonsButton
+    <div v-else class="cards-container">
+      <Card
+        v-for="cardInCart in cardsInCart"
+        :key="cardInCart.id"
+        :card="cardInCart"
+      />
+      <!-- <ButtonsButton
       :width="'70%'"
       v-if="cardsInCart.length > 0"
       :text="'Заказать все'"
-    /> -->
+      /> -->
+    </div>
   </div>
 </template>
 
@@ -42,6 +51,10 @@ export default {
 
 <style scoped lang="scss">
 .cart {
-  padding: 7rem 0;
+  padding-top: 10rem;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

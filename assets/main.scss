@@ -3,3 +3,30 @@
 @import './helpers/functions.scss';
 @import './helpers/normalize.scss';
 @import './helpers/mixins.scss';
+
+
+.empty {
+    text-align: center;
+
+    &__title {
+        font-size: rem(25);
+        color: $cl_yellow;
+        text-align: center;
+    }
+
+    &__text {
+        font-size: rem(18);
+        color: $cl_yellow;
+        text-align: center;
+    }
+
+    &__btn {
+        font-size: rem(18);
+        background-color: $cl_yellow;
+        text-align: center;
+        border-radius: 2rem;
+        padding: toEm(12, 18) toEm(24, 18);
+        margin: 1rem 0;
+        border: none;
+    }
+}

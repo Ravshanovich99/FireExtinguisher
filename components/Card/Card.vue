@@ -6,9 +6,9 @@
         : 'card card-black-shadow'
     "
   >
-    <!-- <div class="img-card"> -->
-      <img :src="card.images[0]" alt="Sample 1"  />
-    <!-- </div> -->
+    <div class="img-card">
+      <img :src="card.images[0]" alt="Sample 1" />
+    </div>
     <div class="icons">
       <div class="like-btn">
         <b-icon

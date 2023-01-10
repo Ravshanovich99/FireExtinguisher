@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <LargeCardDisplay :cardsInfo="exactState" />
+    <LargeCardDisplay :cards-info="exactState" />
   </div>
 </template>
 
