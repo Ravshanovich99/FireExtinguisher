@@ -187,7 +187,7 @@ export const actions = {
       commit('setState', { data, reference })
 
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   },
 
@@ -196,7 +196,7 @@ export const actions = {
       const { data } = await axios.get(`${process.env.DATABASE_URL}/${stateName}/cards/${cardId}.json`)
       return data
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   },
 
@@ -205,7 +205,7 @@ export const actions = {
       const { data } = await axios.get(`${process.env.DATABASE_URL}/${stateName}.json`)
       return data
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   },
 
@@ -233,7 +233,7 @@ export const actions = {
   onAuthStateChangedAction: async (ctx, { authUser, claims }) => {
     if (authUser) {
       await ctx.dispatch('getUserProfileFromDb', authUser.uid)
-      // console.log('onAuthStateChangedAction', ctx.rootState.user);
+      console.log('onAuthStateChangedAction', ctx.rootState.user);
     } else ctx.commit('ON_AUTH_STATE_CHANGED_MUTATION')
   },
 
@@ -241,12 +241,12 @@ export const actions = {
     try {
       const response = await this.$fire.database.ref(`users/${userUid}`)
       const { data } = await axios.get(response.toString() + '.json')
-      // console.log('getUserProfileFromDb', data);
-      if (data && !state.user) {
+      console.log('getUserProfileFromDb', data);
+      if (data) {
         commit('setUserProfile', data)
       }
     } catch (error) {
-      // console.log(error)
+      console.log(error)
     }
   },
 
@@ -259,14 +259,16 @@ export const actions = {
       )
       const user = result.user
       if (user) {
+
         // TO-DO: find bag when loggin in and fetch for one time
+
         await dispatch('getUserProfileFromDb', user.uid)
         $nuxt.$router.push('/profile')
         commit('clearAuthError')
       }
     } catch (error) {
       commit('setAuthError', error)
-      // console.log(error);
+      console.log(error);
     }
   },
 
@@ -297,7 +299,7 @@ export const actions = {
       }
     } catch (error) {
       commit('setAuthError', error)
-      // console.log(error);
+      console.log(error);
     }
   },
 
@@ -308,7 +310,7 @@ export const actions = {
       const user = result.user
 
       if (user) {
-        await this.$fire.database.ref('users').on('value', (e) => {
+        await this.$fire.database.ref('users').on('value', async (e) => {
           const usersInDatabase = e.val()
           // console.log('usersInDatabase', usersInDatabase);
           let isUserInDatabase
@@ -331,15 +333,20 @@ export const actions = {
               bio: ''
             }
             commit('setUserProfile', data)
-            this.$fire.database.ref(`users/${user.uid}`).update(data)
+            $nuxt.$router.push('/profile')
+            await this.$fire.database.ref(`users/${user.uid}`).update(data)
+          } else {
+            await dispatch('getUserProfileFromDb', user.uid)
+            // console.log('router to profile from google signin', state.user);
+            $nuxt.$router.push('/profile')
+
+            // TO-DO: find bag when loggin in and fetch for one time
           }
-          // console.log('router to profile from google signin', state.user);
-          $nuxt.$router.push('/profile')
         })
       }
 
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   },
 
@@ -358,7 +365,7 @@ export const actions = {
       commit('updateUserProfile', updatedUserData)
       // console.log('updated');
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   },
 
@@ -383,7 +390,7 @@ export const actions = {
       const { data } = await axios.get(`${process.env.DATABASE_URL}/reviews.json`)
       commit('setCustomerReviews', data)
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   },
 
@@ -392,7 +399,7 @@ export const actions = {
       const URL = `https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage?chat_id=${process.env.BOT_CHAT_ID}&text=${orderInfo}&parse_mode=html`
       await fetch(URL);
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   },
 
@@ -403,7 +410,7 @@ export const actions = {
       }
       await this.$fire.database.ref(`users/${state.user.uid}`).child('orders').push(orderedProduct)
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   }
 }

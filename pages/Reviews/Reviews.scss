@@ -2,4 +2,8 @@
 
 .reviews {
     padding-top: 6rem;
+
+    .rounded-circle {
+        object-fit: cover;
+    }
 }

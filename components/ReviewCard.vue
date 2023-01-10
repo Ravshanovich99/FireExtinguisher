@@ -43,7 +43,8 @@ export default {
 img {
   width: 4rem;
   height: 4rem;
-  border-radius: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 p {
   color: grey;
