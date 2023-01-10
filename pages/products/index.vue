@@ -17,6 +17,23 @@
 
 <script>
 export default {
+  data() {
+    return {
+      title: 'Продукты',
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Подарки на любой вкус',
+        },
+      ],
+    }
+  },
   computed: {
     getStates() {
       if (this.$store.state.glasses.length === 0) return
@@ -35,5 +52,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

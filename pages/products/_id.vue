@@ -82,6 +82,23 @@ export default {
       product: null,
     }
   },
+  head() {
+    return {
+      title: this.product?.title || 'Продукты',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.product?.description || 'Подарки на любой вкус',
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.product?.title,
+        },
+      ],
+    }
+  },
   async mounted() {
     const stateName = this.$route.query.search
     const cardId = this.$route.params.id

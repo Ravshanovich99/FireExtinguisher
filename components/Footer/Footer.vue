@@ -2,12 +2,7 @@
   <div class="footer">
     <footer class="text-center text-lg-start text-muted">
       <section
-        class="
-          d-flex
-          justify-content-center justify-content-lg-between
-          p-4
-          border-top
-        "
+        class="d-flex justify-content-center justify-content-lg-between p-4 border-top"
       ></section>
 
       <section>
@@ -87,7 +82,7 @@
         <span class="text-uppercase fw-bold mb-4 logo-name-bottom"
           >Florida</span
         >
-        © 2022
+        © {{ new Date().getFullYear() }}
       </div>
     </footer>
   </div>
@@ -98,5 +93,4 @@ import './Footer.scss'
 export default {}
 </script>
 
-<style>
-</style>
+<style></style>

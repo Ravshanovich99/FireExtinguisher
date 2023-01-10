@@ -10,6 +10,23 @@
 
 <script>
 export default {
+  data() {
+    return {
+      title: 'Избранное',
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Подарки на любой вкус',
+        },
+      ],
+    }
+  },
   computed: {
     likedCards() {
       return this.$store.getters.getLikedCards

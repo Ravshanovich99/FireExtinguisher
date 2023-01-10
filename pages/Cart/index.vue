@@ -15,6 +15,23 @@
 
 <script>
 export default {
+  data() {
+    return {
+      title: 'Корзина',
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Подарки на любой вкус',
+        },
+      ],
+    }
+  },
   computed: {
     cardsInCart() {
       return this.$store.getters.getCardsInCart
