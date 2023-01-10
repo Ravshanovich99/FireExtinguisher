@@ -233,7 +233,7 @@ export const actions = {
   onAuthStateChangedAction: async (ctx, { authUser, claims }) => {
     if (authUser) {
       await ctx.dispatch('getUserProfileFromDb', authUser.uid)
-      console.log('onAuthStateChangedAction', ctx.rootState.user);
+      // console.log('onAuthStateChangedAction', ctx.rootState.user);
     } else ctx.commit('ON_AUTH_STATE_CHANGED_MUTATION')
   },
 
@@ -241,7 +241,7 @@ export const actions = {
     try {
       const response = await this.$fire.database.ref(`users/${userUid}`)
       const { data } = await axios.get(response.toString() + '.json')
-      console.log('getUserProfileFromDb', data);
+      // console.log('getUserProfileFromDb', data);
       if (data) {
         commit('setUserProfile', data)
       }

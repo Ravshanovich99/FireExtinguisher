@@ -60,23 +60,26 @@
               </div>
             </div>
           </div>
-
-          <div class="social-links">
-            <div
-              :class="
-                $store.state.darkMode ? 'border-top-yellow' : 'border-top-green'
-              "
-            >
-              <a
-                href="https://www.instagram.com/florida_gifts"
-                class="social-link"
-                ><b-icon class="b-icon" icon="instagram"></b-icon
-              ></a>
-              <a href="https://www.t.me/florida_gift" class="social-link"
-                ><b-icon class="b-icon" icon="telegram"></b-icon
-              ></a>
+          <ClientOnly>
+            <div class="social-links">
+              <div
+                :class="
+                  $store.state.darkMode
+                    ? 'border-top-yellow'
+                    : 'border-top-green'
+                "
+              >
+                <a
+                  href="https://www.instagram.com/florida_gifts"
+                  class="social-link"
+                  ><b-icon class="b-icon" icon="instagram"></b-icon
+                ></a>
+                <a href="https://www.t.me/florida_gift" class="social-link"
+                  ><b-icon class="b-icon" icon="telegram"></b-icon
+                ></a>
+              </div>
             </div>
-          </div>
+          </ClientOnly>
         </div>
       </section>
 

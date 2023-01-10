@@ -1,19 +1,21 @@
 <template>
-  <div :style="`width: ${width}`" class="button-container">
-    <button v-if="sort === 'disabled'" class="button disabled" :type="type">
-      {{ text }}
-    </button>
-    <button
-      v-else
-      :class="dark ? 'button dark' : 'button'"
-      @click="$emit('click')"
-    >
-      <div class="button-info">
-        <b-icon v-show="icon" class="b-icon" :icon="icon"></b-icon>
-        <div class="button-text">{{ text }}</div>
-      </div>
-    </button>
-  </div>
+  <ClientOnly>
+    <div :style="`width: ${width}`" class="button-container">
+      <button v-if="sort === 'disabled'" class="button disabled" :type="type">
+        {{ text }}
+      </button>
+      <button
+        v-else
+        :class="dark ? 'button dark' : 'button'"
+        @click="$emit('click')"
+      >
+        <div class="button-info">
+          <b-icon v-show="icon" class="b-icon" :icon="icon"></b-icon>
+          <div class="button-text">{{ text }}</div>
+        </div>
+      </button>
+    </div>
+  </ClientOnly>
 </template>
 
 <script>
