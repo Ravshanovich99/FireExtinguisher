@@ -21,67 +21,69 @@
       <span v-for="span in 3" :key="span"></span>
     </div>
 
-    <ul :class="burgerMenuOpen ? 'navbar-items md' : 'navbar-items'">
-      <li class="nav-item">
-        <div class="nav-item heart">
-          <NuxtLink to="/favourites" class="nav-link fav">
-            <span v-show="burgerMenuOpen" class="fav-text">Избранные</span>
-            <b-icon class="b-icon" icon="suit-heart"></b-icon>
-            <!-- <span class="like-counter">{{
-              $store.state.likedCards.length
-            }}</span> -->
+    <ClientOnly>
+      <ul :class="burgerMenuOpen ? 'navbar-items md' : 'navbar-items'">
+        <li class="nav-item">
+          <div class="nav-item heart">
+            <NuxtLink to="/favourites" class="nav-link fav">
+              <span v-show="burgerMenuOpen" class="fav-text">Избранные</span>
+              <b-icon class="b-icon" icon="suit-heart"></b-icon>
+              <span class="like-counter">{{
+                $store.state.likedCards.length
+              }}</span>
+            </NuxtLink>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-item heart">
+            <NuxtLink to="/cart" class="nav-link fav">
+              <span v-show="burgerMenuOpen" class="fav-text">Корзина</span>
+              <b-icon class="b-icon" icon="cart3"></b-icon>
+              <span class="like-counter">{{ $store.state.cart.length }}</span>
+            </NuxtLink>
+          </div>
+        </li>
+        <li class="nav-item">
+          <NuxtLink to="/products" class="nav-link">Продукты</NuxtLink>
+        </li>
+        <li class="nav-item">
+          <NuxtLink to="/reviews" class="nav-link">Отзывы</NuxtLink>
+        </li>
+        <li class="nav-item icons">
+          <label for="theme-checkbox" class="toggler">
+            <input
+              id="theme-checkbox"
+              type="checkbox"
+              :checked="$store.state.darkMode ? false : true"
+              @change="changeTheme"
+            />
+            <span class="ball"></span>
+            <b-icon class="b-icon" icon="moon-stars"></b-icon>
+            <b-icon class="b-icon" icon="sun"></b-icon>
+          </label>
+        </li>
+        <li v-show="$store.state.user" class="nav-item user-avatar">
+          <NuxtLink to="/profile">
+            <img :src="$store.state.user.photo" alt="photo" />
+            <span v-show="burgerMenuOpen">{{ $store.state.user.name }}</span>
           </NuxtLink>
-        </div>
-      </li>
-      <li class="nav-item">
-        <div class="nav-item heart">
-          <NuxtLink to="/cart" class="nav-link fav">
-            <span v-show="burgerMenuOpen" class="fav-text">Корзина</span>
-            <b-icon class="b-icon" icon="cart3"></b-icon>
-            <!-- <span class="like-counter">{{ $store.state.cart.length }}</span> -->
+        </li>
+        <li v-show="!$store.state.user" class="nav-item user-login">
+          <NuxtLink to="/login" class="nav-link">
+            <span
+              :class="
+                $store.state.darkMode
+                  ? 'nav-item login-btn dark'
+                  : 'nav-item login-btn'
+              "
+            >
+              <b-icon class="b-icon" icon="person-plus"></b-icon>
+            </span>
+            <span v-show="burgerMenuOpen">Вход в аккаунт</span>
           </NuxtLink>
-        </div>
-      </li>
-      <li class="nav-item">
-        <NuxtLink to="/products" class="nav-link">Продукты</NuxtLink>
-      </li>
-      <li class="nav-item">
-        <NuxtLink to="/reviews" class="nav-link">Отзывы</NuxtLink>
-      </li>
-      <li class="nav-item icons">
-        <label for="theme-checkbox" class="toggler">
-          <input
-            id="theme-checkbox"
-            type="checkbox"
-            :checked="$store.state.darkMode ? false : true"
-            @change="changeTheme"
-          />
-          <span class="ball"></span>
-          <b-icon class="b-icon" icon="moon-stars"></b-icon>
-          <b-icon class="b-icon" icon="sun"></b-icon>
-        </label>
-      </li>
-      <li v-if="$store.state.user" class="nav-item user-avatar">
-        <NuxtLink to="/profile">
-          <img :src="$store.state.user.photo" alt="photo" />
-          <span v-show="burgerMenuOpen">{{ $store.state.user.name }}</span>
-        </NuxtLink>
-      </li>
-      <li v-else class="nav-item user-login">
-        <NuxtLink to="/login" class="nav-link">
-          <span
-            :class="
-              $store.state.darkMode
-                ? 'nav-item login-btn dark'
-                : 'nav-item login-btn'
-            "
-          >
-            <b-icon class="b-icon" icon="person-plus"></b-icon>
-          </span>
-          <span v-show="burgerMenuOpen">Вход в аккаунт</span>
-        </NuxtLink>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </ClientOnly>
   </nav>
 </template>
 
