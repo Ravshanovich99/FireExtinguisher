@@ -63,7 +63,8 @@
                 width: 70%;
 
                 @include sm {
-                    width: 80%;
+                    width: 82%;
+                    font-size: 14px;
                 }
             }
         }
@@ -128,7 +129,7 @@
     // right: -10%;
     width: 45%;
 
-    & > img {
+    &>img {
         width: 100%;
     }
 
