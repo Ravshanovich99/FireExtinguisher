@@ -2,7 +2,12 @@
   <div class="footer">
     <footer class="text-center text-lg-start text-muted">
       <section
-        class="d-flex justify-content-center justify-content-lg-between p-4 border-top"
+        class="
+          d-flex
+          justify-content-center justify-content-lg-between
+          p-4
+          border-top
+        "
       ></section>
 
       <section>
@@ -65,7 +70,7 @@
                 "
               >
                 <a
-                  href="https://www.instagram.com/florida_gifts"
+                  href="https://www.instagram.com/florida_gift_"
                   class="social-link"
                   ><b-icon class="b-icon" icon="instagram"></b-icon
                 ></a>
