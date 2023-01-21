@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     showModal() {
-      if (!this.selectedSize && this.orderingProduct.stateName !== 'glasses') {
+      if (!this.selectedSize) {
         this.$emit('showSizeToast')
         return
       }

@@ -28,6 +28,10 @@
         @click="postReview"
       />
     </div>
+    <Toast
+      :toastId="'rate-toast'"
+      :text="'Ваш отзыв опубликовано \n Спасибо за ваш отзыв!'"
+    />
   </div>
 </template>
 
@@ -54,8 +58,12 @@ export default {
   methods: {
     async postReview() {
       this.loading = true
-      await this.$store.dispatch('publishReviewToDb', this.user)
+      const review = this.user
+      await this.$store.dispatch('publishReviewToDb', { review })
       this.loading = false
+      this.$bvToast.show('rate-toast')
+      this.user.review = ''
+      this.user.rate = null
     },
   },
 }

@@ -12,7 +12,8 @@ export const state = () => ({
   allCards: [],
   albums: [],
   portrets: [],
-  glasses: [],
+  notebooks: [],
+  photolamp: [],
   user: false,
   authError: null,
   smallCards: {
@@ -61,7 +62,6 @@ export const mutations = {
 
   setUserProfile(state, userProfile) {
     state.user = userProfile
-    // console.log('state_user', state.user);
   },
 
   updateUserProfile(state, updatedUserData) {
@@ -85,7 +85,6 @@ export const mutations = {
       data[id].id = id
     }
     state.customerReviews = data
-    // console.log(state.customerReviews);
   },
 
   /* LikedCard LocalStorage */
@@ -162,10 +161,10 @@ export const getters = {
 
   getPortrets: (state) => state.portrets,
 
-  getGlasses: (state) => state.glasses,
+  getNotebooks: (state) => state.notebooks,
 
   getAllStateInOneArr: (state) => {
-    return [state.albums, state.portrets, state.glasses];
+    return [state.albums, state.portrets, state.notebooks, state.photolamp];
   },
 
   getStateByName: (state) => (stateName) => {
@@ -233,7 +232,6 @@ export const actions = {
   onAuthStateChangedAction: async (ctx, { authUser, claims }) => {
     if (authUser) {
       await ctx.dispatch('getUserProfileFromDb', authUser.uid)
-      // console.log('onAuthStateChangedAction', ctx.rootState.user);
     } else ctx.commit('ON_AUTH_STATE_CHANGED_MUTATION')
   },
 
@@ -293,7 +291,6 @@ export const actions = {
         }
         commit('clearAuthError')
         commit('setUserProfile', data)
-        // console.log('router to profile from create user', state.user);
         $nuxt.$router.push('/profile')
         await this.$fire.database.ref('users').child(user.uid).update(data)
       }
@@ -312,14 +309,12 @@ export const actions = {
       if (user) {
         await this.$fire.database.ref('users').on('value', async (e) => {
           const usersInDatabase = e.val()
-          // console.log('usersInDatabase', usersInDatabase);
           let isUserInDatabase
           if (usersInDatabase) {
             isUserInDatabase = Object.keys(usersInDatabase).find(id => id === user.uid)
           } else {
             isUserInDatabase = false
           }
-          // console.log('isUserInDatabase', !!isUserInDatabase);
           if (!!!isUserInDatabase) {
             // console.log('user is new');
             const data = {
@@ -363,7 +358,6 @@ export const actions = {
         bio: updatedUserData.bio,
       })
       commit('updateUserProfile', updatedUserData)
-      // console.log('updated');
     } catch (error) {
       console.log(error);
     }
@@ -381,8 +375,9 @@ export const actions = {
     })
   },
 
-  async publishReviewToDb({ dispatch, commit }, review) {
+  async publishReviewToDb({ dispatch, commit }, { review }) {
     await this.$fire.database.ref('reviews').push(review)
+    await dispatch('getCustomerReviewsFromDb')
   },
 
   async getCustomerReviewsFromDb({ dispatch, commit }) {

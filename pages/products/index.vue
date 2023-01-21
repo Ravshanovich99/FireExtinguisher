@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     getStates() {
-      if (this.$store.state.glasses.length === 0) return
+      if (this.$store.state.photolamp.length === 0) return
       return this.$store.getters.getAllStateInOneArr
     },
     smallCard() {
@@ -47,7 +47,8 @@ export default {
   async mounted() {
     await this.$store.dispatch('getDataByReferenceFromDb', 'albums')
     await this.$store.dispatch('getDataByReferenceFromDb', 'portrets')
-    await this.$store.dispatch('getDataByReferenceFromDb', 'glasses')
+    await this.$store.dispatch('getDataByReferenceFromDb', 'notebooks')
+    await this.$store.dispatch('getDataByReferenceFromDb', 'photolamp')
   },
 }
 </script>

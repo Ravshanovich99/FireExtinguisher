@@ -41,8 +41,8 @@
                   >
                 </p>
                 <p>
-                  <NuxtLink to="/glasses" class="text-reset"
-                    >Стеклянные</NuxtLink
+                  <NuxtLink to="/notebooks" class="text-reset"
+                    >Блокноты</NuxtLink
                   >
                 </p>
               </div>
