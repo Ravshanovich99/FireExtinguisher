@@ -26,7 +26,7 @@
         <li class="nav-item">
           <div class="nav-item heart">
             <NuxtLink to="/favourites" class="nav-link fav">
-              <span v-show="burgerMenuOpen" class="fav-text">Избранные</span>
+              <span v-if="burgerMenuOpen" class="fav-text">Избранные</span>
               <b-icon class="b-icon" icon="suit-heart"></b-icon>
               <span class="like-counter">{{
                 $store.state.likedCards.length
@@ -37,7 +37,7 @@
         <li class="nav-item">
           <div class="nav-item heart">
             <NuxtLink to="/cart" class="nav-link fav">
-              <span v-show="burgerMenuOpen" class="fav-text">Корзина</span>
+              <span v-if="burgerMenuOpen" class="fav-text">Корзина</span>
               <b-icon class="b-icon" icon="cart3"></b-icon>
               <span class="like-counter">{{ $store.state.cart.length }}</span>
             </NuxtLink>
@@ -62,13 +62,13 @@
             <b-icon class="b-icon" icon="sun"></b-icon>
           </label>
         </li>
-        <li v-show="$store.state.user" class="nav-item user-avatar">
+        <li v-if="$store.state.user" class="nav-item user-avatar">
           <NuxtLink to="/profile">
             <img :src="$store.state.user.photo" alt="photo" />
-            <span v-show="burgerMenuOpen">{{ $store.state.user.name }}</span>
+            <span v-if="burgerMenuOpen">{{ $store.state.user.name }}</span>
           </NuxtLink>
         </li>
-        <li v-show="!$store.state.user" class="nav-item user-login">
+        <li v-else class="nav-item user-login">
           <NuxtLink to="/login" class="nav-link">
             <span
               :class="
@@ -79,7 +79,7 @@
             >
               <b-icon class="b-icon" icon="person-plus"></b-icon>
             </span>
-            <span v-show="burgerMenuOpen">Вход в аккаунт</span>
+            <span v-if="burgerMenuOpen">Вход в аккаунт</span>
           </NuxtLink>
         </li>
       </ul>
