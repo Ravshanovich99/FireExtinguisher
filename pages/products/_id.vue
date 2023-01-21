@@ -23,7 +23,7 @@
         <div class="product-info">
           <h1 class="title">{{ product.title }}</h1>
           <p class="snippet">{{ product.description }}</p>
-          <div v-if="product.stateName !== 'glasses'" class="product-prices">
+          <div class="product-prices">
             <b-form-radio
               v-for="price of product.prices"
               :key="price.price"
@@ -36,7 +36,6 @@
               </div></b-form-radio
             >
           </div>
-          <div v-else>{{ product.prices }} cум</div>
         </div>
         <OrderModal
           :orderingProduct="product"

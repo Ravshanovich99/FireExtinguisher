@@ -4,7 +4,7 @@
     <div>
       <ReviewCard
         v-for="reviewer in reviews"
-        :key="reviewer.userPhoto"
+        :key="reviewer.id"
         :review="reviewer"
       />
     </div>
@@ -18,12 +18,6 @@ export default {
       type: String,
       default: '',
     },
-  },
-  data() {
-    return {
-      reviewers: null,
-      id: null,
-    }
   },
 
   computed: {

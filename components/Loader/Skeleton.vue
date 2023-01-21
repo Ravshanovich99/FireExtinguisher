@@ -1,6 +1,6 @@
 <template>
-  <div v-show="productIdPage" class="container">
-    <div class="skeletons-container">
+  <div class="container">
+    <div v-show="productIdPage" class="skeletons-container">
       <div class="skeletons-left">
         <b-card class="skeleton">
           <b-skeleton-img class="skeleton-img" no-aspect></b-skeleton-img>
@@ -23,6 +23,11 @@
         </b-card>
       </div>
     </div>
+    <div v-show="card" class="card-skeleton">
+      <b-card class="skeleton">
+        <b-skeleton-img class="skeleton-img" no-aspect></b-skeleton-img>
+      </b-card>
+    </div>
   </div>
 </template>
 
@@ -31,6 +36,9 @@ import './Skeleton.scss'
 export default {
   props: {
     productIdPage: {
+      type: Boolean,
+    },
+    card: {
       type: Boolean,
     },
   },
