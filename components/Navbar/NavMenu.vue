@@ -16,7 +16,7 @@
     <!-- Hamburger Menu  -->
     <div
       :class="burgerMenuOpen ? 'burger open' : 'burger'"
-      @click="burgerMenuOpen = !burgerMenuOpen"
+      @click="burgerMenuHandler"
     >
       <span v-for="span in 3" :key="span"></span>
     </div>
@@ -100,6 +100,9 @@ export default {
 
   methods: {
     ...mapMutations(['changeTheme']),
+    burgerMenuHandler() {
+      this.burgerMenuOpen = !this.burgerMenuOpen
+    },
   },
 }
 </script>
