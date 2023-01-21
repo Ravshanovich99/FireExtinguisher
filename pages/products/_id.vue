@@ -24,17 +24,18 @@
           <h1 class="title">{{ product.title }}</h1>
           <p class="snippet">{{ product.description }}</p>
           <div class="product-prices">
-            <b-form-radio
-              v-for="price of product.prices"
-              :key="price.price"
-              v-model="selectedSize"
-              :value="`${price.width} x ${price.height}`"
-              class="price-radio"
-              ><div class="price-radio__info">
-                {{ price.width }} x {{ price.height }}
-                <span class="price">{{ price.price }} сум</span>
-              </div></b-form-radio
-            >
+            <div v-for="price of product.prices" :key="price.price">
+              <b-form-radio
+                v-if="price"
+                v-model="selectedSize"
+                :value="`${price.width} x ${price.height}`"
+                class="price-radio"
+                ><div class="price-radio__info">
+                  {{ price.width }} x {{ price.height }}
+                  <span class="price">{{ price.price }} сум</span>
+                </div></b-form-radio
+              >
+            </div>
           </div>
         </div>
         <OrderModal
